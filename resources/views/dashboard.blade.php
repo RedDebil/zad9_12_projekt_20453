@@ -12,6 +12,16 @@
                     {{ __("You're logged in!") }}
                 </div>
             </div>
+
+            <!-- Orders Section -->
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
+                <div class="p-6 text-gray-900">
+                    <h3 class="font-semibold text-lg text-gray-800 leading-tight mb-4">Twoje Zamówienia</h3>
+                    <a href="{{ route('orders.index') }}" class="text-blue-500 hover:underline">
+                        Przejdź do zamówień
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

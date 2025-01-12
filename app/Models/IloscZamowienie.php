@@ -13,12 +13,12 @@ class IloscZamowienie extends Model
 
     public function zamowienie()
     {
-        return $this->belongsTo(Zamowienia::class);
+        return $this->belongsTo(Zamowienia::class,'zamowienia_id');
     }
 
     public function produkt()
     {
-        return $this->belongsTo(Produkty::class);
+        return $this->belongsTo(Produkty::class,'produkty_id');
     }
 
     protected $table = 'ilosc_zamowienie'; 

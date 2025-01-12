@@ -13,12 +13,12 @@ class Opinie extends Model
 
     public function produkt()
     {
-        return $this->belongsTo(Produkty::class);
+        return $this->belongsTo(Produkty::class,'produkty_id');
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'users_id');
     }
     protected $table = 'opinie'; 
 }

@@ -23,12 +23,13 @@ class Zamowienia extends Model
 
     public function kurier()
     {
-        return $this->belongsTo(Kurierzy::class);
+        return $this->belongsTo(Kurierzy::class,'kurierzy_id');
     }
 
-    public function iloscZamowienia()
+    public function products()
     {
-        return $this->hasMany(IloscZamowienie::class);
+        return $this->belongsToMany(Produkty::class, 'ilosc_zamowienie', 'zamowienia_id', 'produkty_id')
+                    ->withPivot('ilosc');
     }
     protected $table = 'zamowienia'; 
 }

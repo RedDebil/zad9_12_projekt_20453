@@ -15,21 +15,21 @@ class AdresSeeder extends Seeder
                 'nazwa_ulicy' => 'Marszałkowska',
                 'nr_ulicy' => 15,
                 'nr_mieszkania' => 5,
-                'typ_adresu' => 'dom',
+                'typ_adresu' => 'paczkomat',
             ],
             [
                 'miejscowosc' => 'Kraków',
                 'nazwa_ulicy' => 'Floriańska',
                 'nr_ulicy' => 20,
                 'nr_mieszkania' => 10,
-                'typ_adresu' => 'mieszkanie',
+                'typ_adresu' => 'paczkomat',
             ],
             [
                 'miejscowosc' => 'Gdańsk',
                 'nazwa_ulicy' => 'Długa',
                 'nr_ulicy' => 35,
                 'nr_mieszkania' => 7,
-                'typ_adresu' => 'biuro',
+                'typ_adresu' => 'paczkomat',
             ],
         ];
 

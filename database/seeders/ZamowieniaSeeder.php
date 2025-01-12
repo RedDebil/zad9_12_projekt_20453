@@ -20,8 +20,8 @@ class ZamowieniaSeeder extends Seeder
             [
                 'cena_totalna' => 499.99,
                 'status' => 'w trakcie',
-                'users_id' => 2,
-                'adres_id' => 2,
+                'users_id' => 1,
+                'adres_id' => 1,
                 'kurierzy_id' => 2,
             ],
         ];

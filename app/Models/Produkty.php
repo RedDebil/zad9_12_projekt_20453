@@ -13,17 +13,18 @@ class Produkty extends Model
 
     public function kategoria()
     {
-        return $this->belongsTo(Kategoria::class);
+        return $this->belongsTo(Kategoria::class,'kategoria_id');
     }
 
     public function dostawca()
     {
-        return $this->belongsTo(Dostawca::class);
+        return $this->belongsTo(Dostawca::class,'dostawca_id');
     }
 
-    public function iloscZamowienia()
+    public function orders()
     {
-        return $this->hasMany(IloscZamowienie::class);
+        return $this->belongsToMany(Zamowienia::class, 'ilosc_zamowienie', 'produkty_id', 'zamowienia_id')
+                    ->withPivot('ilosc');
     }
 
     public function opinie()

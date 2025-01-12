@@ -52,5 +52,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Opinie::class);
     }
+    
     protected $table = 'users'; 
 }
