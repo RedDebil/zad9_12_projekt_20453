@@ -29,4 +29,43 @@ class OpinieController extends Controller
 
         return redirect()->route('orders.index');
     }
+
+    public function edit($id)
+    {
+        $opinia = Opinie::where('id', $id)
+            ->where('users_id', auth()->id())
+            ->firstOrFail();
+
+        return view('opinie.edit', compact('opinia'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $opinia = Opinie::where('id', $id)
+            ->where('users_id', auth()->id())
+            ->firstOrFail();
+
+        $request->validate([
+            'ocena' => 'required|integer|min:1|max:5',
+            'komentarz' => 'required|string|max:255',
+        ]);
+
+        $opinia->update($request->only(['ocena', 'komentarz']));
+
+        return redirect()->route('produkty.show', $opinia->produkty_id)
+            ->with('success', 'Opinia została zaktualizowana.');
+    }
+
+    public function destroy($id)
+    {
+        $opinia = Opinie::where('id', $id)
+            ->where('users_id', auth()->id())
+            ->firstOrFail();
+
+        $opinia->delete();
+
+        return redirect()->route('produkty.show', $opinia->produkty_id)
+            ->with('success', 'Opinia została usunięta.');
+    }
+
 }

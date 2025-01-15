@@ -10,8 +10,8 @@ class KategoriaSeeder extends Seeder
     public function run()
     {
         $kategorie = [
-            ['kategoria' => 'Noże'],
-            ['kategoria' => 'Lornetki'],
+            ['kategoria' => 'Broń'],
+            ['kategoria' => 'Narzędzia'],
             ['kategoria' => 'Odzież'],
         ];
 

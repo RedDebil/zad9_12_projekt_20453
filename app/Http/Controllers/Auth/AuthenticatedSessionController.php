@@ -23,13 +23,31 @@ class AuthenticatedSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request)
     {
-        $request->authenticate();
+        // Walidacja danych logowania, np. email, hasło
 
-        $request->session()->regenerate();
+        // Logowanie użytkownika
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $request->session()->regenerate();
+
+            // Sprawdź rolę użytkownika i przekieruj na odpowiednią stronę
+            if (Auth::user()->role === 'mod') {
+                return redirect()->route('mod.dashboard');
+            }
+
+            return redirect()->route('dashboard');
+        }
+
+        // W przypadku niepowodzenia logowania
+        return back()->withErrors([
+            'email' => 'Nieprawidłowe dane logowania.',
+        ]);
     }
 
     /**

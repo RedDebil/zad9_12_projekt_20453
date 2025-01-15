@@ -5,25 +5,59 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
+                    @if (Auth::user()->role === 'user')
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
+                    @endif
+                    @if (Auth::user()->role === 'mod')
+                    <a href="{{ route('mod.dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    </a>
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                    @if (Auth::user()->role === 'user')
                     <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
-                        {{ __('Zamówienia') }}
+                        {{ __('Przejrzyj swoje zamówienia') }}
                     </x-nav-link>
+                    @endif
+                    @if (Auth::user()->role === 'user')
                     <x-nav-link :href="route('orders.create')" :active="request()->routeIs('orders.create')">
                         {{ __('Dodaj Nowe Zamówienie') }}
                     </x-nav-link>
+                    @endif
+                    @if (Auth::user()->role === 'user')
                     <x-nav-link :href="route('produkty.index')" :active="request()->routeIs('produkty.index')">
                         {{ __('Zobacz produkty') }}
                     </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'mod')
+                        <x-nav-link :href="route('produkty.create')" :active="request()->routeIs('mod.dashboard')">
+                            {{ __('Dodaj nowy produkt') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'mod')
+                        <x-nav-link :href="route('mod.produkty.index')" :active="request()->routeIs('mod.dashboard')">
+                            {{ __('Przejdź do produktów') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'mod')
+                        <x-nav-link :href="route('adres.create')" :active="request()->routeIs('mod.dashboard')">
+                            {{ __('Dodaj nowy paczkomat') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'mod')
+                        <x-nav-link :href="route('mod.orders.index')" :active="request()->routeIs('mod.dashboard')">
+                            {{ __('Przejdź do zamówień') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

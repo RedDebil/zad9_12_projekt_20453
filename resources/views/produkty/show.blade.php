@@ -26,6 +26,18 @@
                                     <p><strong>Ocena:</strong> {{ $opinia->ocena }} / 5</p>
                                     <p><strong>Komentarz:</strong> {{ $opinia->komentarz }}</p>
                                     <p class="text-sm text-gray-500"><strong>Data dodania:</strong> {{ $opinia->created_at->format('d-m-Y H:i') }}</p>
+
+                                    <!-- Dodanie przycisków edycji i usuwania tylko dla właściciela opinii -->
+                                    @if (auth()->check() && auth()->id() === $opinia->users_id)
+                                        <div class="mt-2">
+                                            <a href="{{ route('opinie.edit', $opinia->id) }}" class="text-blue-500 hover:underline">Edytuj</a>
+                                            <form action="{{ route('opinie.destroy', $opinia->id) }}" method="POST" class="inline-block ml-2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-500 hover:underline" onclick="return confirm('Czy na pewno chcesz usunąć tę opinię?')">Usuń</button>
+                                            </form>
+                                        </div>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>
