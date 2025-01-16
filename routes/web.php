@@ -9,6 +9,11 @@ use App\Http\Controllers\Mod\ModProduktyController;
 use App\Http\Controllers\Mod\ModAdresController;
 use App\Http\Controllers\Mod\ModOpinieController;
 use App\Http\Controllers\Mod\ModOrderController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\Admin\AdminKategoriaController;
+use App\Http\Controllers\Admin\AdminKurierzyController;
+use App\Http\Controllers\Admin\AdminDostawcaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +30,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/access-denied', function () {
+    return view('errors.access-denied');
+})->name('access-denied');
 
 Route::middleware(['auth', 'verified'])->group(function () {
     // Zwykły użytkownik
@@ -74,8 +83,12 @@ Route::middleware(['auth', 'role:mod'])->group(function () {
     Route::get('/mod/produkty/{produkty}/edit', [ModProduktyController::class, 'edit'])->name('produkty.edit');
     Route::put('/mod/produkty/{produkty}', [ModProduktyController::class, 'update'])->name('produkty.update');
 
-    Route::get('/mod/adres/create', [ModAdresController::class, 'create'])->name('adres.create');
-    Route::post('/mod/adres', [ModAdresController::class, 'store'])->name('adres.store');
+    Route::get('/mod/adres', [ModAdresController::class, 'index'])->name('mod.adres.index');
+    Route::get('/mod/adres/create', [ModAdresController::class, 'create'])->name('mod.adres.create');
+    Route::post('/mod/adres', [ModAdresController::class, 'store'])->name('mod.adres.store');
+    Route::get('/mod/adres/{adres}/edit', [ModAdresController::class, 'edit'])->name('mod.adres.edit');
+    Route::put('/mod/adres/{adres}', [ModAdresController::class, 'update'])->name('mod.adres.update');
+    Route::delete('/mod/adres/{adres}', [ModAdresController::class, 'destroy'])->name('mod.adres.destroy');
 
     Route::get('/opinie/{produkt}', [ModOpinieController::class, 'index'])->name('opinie.index');
     Route::get('/mod/opinie/{produktId}', [ModOpinieController::class, 'index'])->name('mod.opinie.index');
@@ -85,6 +98,15 @@ Route::middleware(['auth', 'role:mod'])->group(function () {
 
     Route::post('/mod/orders/{zamowienie}/status', [ModOrderController::class, 'updateStatus'])->name('mod.orders.updateStatus');
 
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::resource('users', AdminUserController::class);
+    Route::resource('kategorie', AdminKategoriaController::class);
+    Route::resource('kurierzy', AdminKurierzyController::class);
+    Route::resource('dostawcy', AdminDostawcaController::class);
 });
 
 require __DIR__.'/auth.php';

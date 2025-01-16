@@ -15,7 +15,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <!-- Przyciski do zmiany kontrastu -->
+        <button id="contrast-toggle" class="bg-gray-500 text-white px-4 py-2 rounded-md fixed top-4 right-4 z-50">
+            Zmień kontrast
+        </button>
+
+        <div class="min-h-screen bg-gray-100" id="main-body">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -32,5 +37,22 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script>
+            // Funkcja do przełączania kontrastu
+            const contrastToggleButton = document.getElementById('contrast-toggle');
+            const body = document.body;
+
+            // Funkcja zmieniająca tryb kontrastu
+            contrastToggleButton.addEventListener('click', function () {
+                body.classList.toggle('high-contrast');
+                localStorage.setItem('high-contrast', body.classList.contains('high-contrast'));
+            });
+
+            // Zapamiętanie ustawienia kontrastu
+            if (localStorage.getItem('high-contrast') === 'true') {
+                body.classList.add('high-contrast');
+            }
+        </script>
     </body>
 </html>

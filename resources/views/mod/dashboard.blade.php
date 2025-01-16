@@ -33,9 +33,9 @@
                 <div class="p-6 text-gray-900">
                     <h3 class="font-semibold text-lg text-gray-800 leading-tight mb-4">Zarządzaj adresami</h3>
 
-                    <!-- Link do formularza dodawania adresu -->
-                    <a href="{{ route('adres.create') }}" class="text-blue-500 hover:underline">
-                        Dodaj nowy paczkomat
+                    <h3 class="font-semibold text-lg text-gray-800 leading-tight mb-4"></h3>
+                    <a href="{{ route('mod.adres.index') }}" class="text-blue-500 hover:underline">
+                        Przejrzyj paczkomaty
                     </a>
                 </div>
             </div>

@@ -44,6 +44,14 @@
                     @endif
                 </div>
             </div>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
+                <div class="p-6 text-gray-900">
+                    <!-- Link do formularza dodawania produktu -->
+                    <a href="{{ route('produkty.index') }}" class="text-blue-500 hover:underline">
+                        Wróć do przeglądywania produktów
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </x-app-layout>

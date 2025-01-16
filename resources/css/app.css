@@ -1,3 +1,69 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tryb wysokiego kontrastu */
+.high-contrast {
+    background-color: black !important; /* Tło czarne */
+    color: white !important; /* Tekst biały */
+}
+
+/* Linki w trybie wysokiego kontrastu */
+.high-contrast a {
+    color: yellow !important; /* Linki na żółto */
+}
+
+/* Przyciski */
+.high-contrast button, .high-contrast input[type="button"], .high-contrast .btn {
+    background-color: #000 !important; /* Tło czarne */
+    color: #fff !important; /* Tekst biały */
+    border: 1px solid white !important;
+}
+
+/* Nagłówki */
+.high-contrast h1, .high-contrast h2, .high-contrast h3, .high-contrast h4, .high-contrast h5, .high-contrast h6 {
+    color: white !important; /* Nagłówki na biało */
+}
+
+/* Tekst ogólny: paragrafy, lista, teksty */
+.high-contrast p, .high-contrast span, .high-contrast li, .high-contrast dt, .high-contrast dd {
+    color: white !important; /* Biały tekst */
+}
+
+/* Formularze: inputy, selecty, textarea */
+.high-contrast input, .high-contrast select, .high-contrast textarea {
+    background-color: #333 !important; /* Ciemne tło */
+    color: white !important; /* Biały tekst */
+    border: 1px solid white !important; /* Białe obramowanie */
+}
+
+/* Zmiana tła dla tła: navbar, footer, sidebar */
+.high-contrast .bg-gray-100, .high-contrast .bg-white {
+    background-color: #222 !important; /* Ciemniejsze tło */
+}
+
+.high-contrast footer, .high-contrast .sidebar {
+    background-color: #222 !important; /* Ciemne tło dla stopki i sidebaru */
+}
+
+/* Zmiana koloru tła dla tabeli */
+.high-contrast table, .high-contrast th, .high-contrast td {
+    background-color: #333 !important; /* Ciemne tło */
+    color: white !important; /* Tekst biały */
+}
+
+/* Inne elementy UI */
+.high-contrast .bg-gray-800, .high-contrast .bg-gray-600 {
+    background-color: #111 !important; /* Ciemniejsze tło */
+}
+
+/* Globalna zmiana dla wszystkich elementów tekstowych */
+.high-contrast * {
+    color: white !important; /* Biały tekst wszędzie */
+}
+
+/* Dla elementów z dużymi kontrastami, jak np. tło karty */
+.high-contrast .card, .high-contrast .panel {
+    background-color: #222 !important;
+    color: white !important;
+}

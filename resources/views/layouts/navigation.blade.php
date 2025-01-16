@@ -15,6 +15,11 @@
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                     @endif
+                    @if (Auth::user()->role === 'admin')
+                    <a href="{{ route('admin.dashboard') }}">
+                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                    </a>
+                    @endif
                 </div>
 
                 <!-- Navigation Links -->
@@ -57,6 +62,24 @@
                         <x-nav-link :href="route('mod.orders.index')" :active="request()->routeIs('mod.dashboard')">
                             {{ __('Przejdź do zamówień') }}
                         </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'admin')
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('orders.index')">
+                        {{ __('Dashboard klienta') }}
+                    </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'admin')
+                    <x-nav-link :href="route('mod.dashboard')" :active="request()->routeIs('orders.index')">
+                        {{ __('Dashboard pracownika') }}
+                    </x-nav-link>
+                    @endif
+
+                    @if (Auth::user()->role === 'admin')
+                    <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('orders.index')">
+                        {{ __('Dashboard admina') }}
+                    </x-nav-link>
                     @endif
                 </div>
             </div>

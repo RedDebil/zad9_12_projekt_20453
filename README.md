@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -65,8 +64,3 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-=======
-### Wersja 1.0 Póki co dodałem po prostu migracje, modele, seedery oraz breeze'a do logowania
-
-### Wersja 2.0 Przygotowanie interfejsu dla użytkownika, żeby mógł dokonać zamówienia, przeglądywać produkty oraz dawać im opinie
->>>>>>> 8c2f7cd9b5cbfdd7a27e64c9104867cf5e7665b8

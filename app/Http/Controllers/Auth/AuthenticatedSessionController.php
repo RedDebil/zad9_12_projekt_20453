@@ -41,6 +41,10 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->route('mod.dashboard');
             }
 
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+
             return redirect()->route('dashboard');
         }
 

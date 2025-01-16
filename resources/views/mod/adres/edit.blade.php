@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dodaj nowy adres') }}
+            {{ __('Edytuj adres') }}
         </h2>
     </x-slot>
 
@@ -19,8 +19,9 @@
                         </div>
                     @endif
 
-                    <form method="POST" action="{{ route('mod.adres.store') }}">
+                    <form method="POST" action="{{ route('mod.adres.update', $adres->id) }}">
                         @csrf
+                        @method('PUT') <!-- Określamy, że to jest aktualizacja -->
 
                         <div class="mb-4">
                             <label for="miejscowosc" class="block text-sm font-medium text-gray-700">Miejscowość</label>
@@ -29,7 +30,7 @@
                                 name="miejscowosc" 
                                 id="miejscowosc" 
                                 class="mt-1 block w-full" 
-                                value="{{ old('miejscowosc') }}" 
+                                value="{{ old('miejscowosc', $adres->miejscowosc) }}" 
                                 required
                                 pattern="^[\p{L}\s\-]+$" 
                                 title="Miejscowość może zawierać tylko litery, spacje i myślniki."
@@ -43,7 +44,7 @@
                                 name="nazwa_ulicy" 
                                 id="nazwa_ulicy" 
                                 class="mt-1 block w-full" 
-                                value="{{ old('nazwa_ulicy') }}" 
+                                value="{{ old('nazwa_ulicy', $adres->nazwa_ulicy) }}" 
                                 required
                                 pattern="^[\p{L}\s\-]+$" 
                                 title="Nazwa ulicy może zawierać tylko litery, spacje i myślniki."
@@ -58,6 +59,7 @@
                                 id="nr_ulicy" 
                                 class="mt-1 block w-full" 
                                 required
+                                value="{{ old('nr_ulicy', $adres->nr_ulicy) }}"
                                 min="1" 
                                 max="99999" 
                                 title="Numer ulicy może zawierać tylko cyfry (maksymalnie 5 cyfr)."
@@ -71,6 +73,7 @@
                                 name="nr_mieszkania" 
                                 id="nr_mieszkania" 
                                 class="mt-1 block w-full" 
+                                value="{{ old('nr_mieszkania', $adres->nr_mieszkania) }}"
                                 min="1" 
                                 max="99999" 
                                 title="Numer mieszkania może zawierać tylko cyfry (maksymalnie 5 cyfr)."
@@ -79,7 +82,7 @@
 
                         <div class="flex items-center justify-between">
                             <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md">
-                                Dodaj adres
+                                Zaktualizuj adres
                             </button>
                         </div>
                     </form>
